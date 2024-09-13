@@ -1,3 +1,4 @@
+
 <?php
 class contents{
     public function main_content(){
@@ -17,5 +18,7 @@ generate a new interface ID to use </p>
         ?>
         <div>
             <h1>Sidebar<h1>
+    </div>
+    <?php
     }
 }
