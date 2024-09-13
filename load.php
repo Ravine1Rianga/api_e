@@ -17,3 +17,4 @@ spl_autoload_register('ClassAutoload');
 // Creating instances of all classes
     $ObjLayouts = new layouts();
     $ObjMenus = new menus();
+    $Objcontents = new contents();
