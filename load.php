@@ -1,6 +1,9 @@
 <?php
-// Class Auto Load
 
+require "includes/constants.php";
+require "includes/dbConnection.php";
+
+// Class Auto Load
 function ClassAutoload($ClassName){
    $directories = ["forms", "processes", "structure", "tables", "global", "store"];
 
@@ -17,4 +20,5 @@ spl_autoload_register('ClassAutoload');
 // Creating instances of all classes
     $ObjLayouts = new layouts();
     $ObjMenus = new menus();
-    $Objcontents = new contents();
+    $ObjContents = new contents();
+    $conn = new dbConnection(DBTYPE, HOSTNAME, DBPORT, HOSTUSER, HOSTPASS, DBNAME);
