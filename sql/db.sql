@@ -1,10 +1,9 @@
-
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 13, 2024 at 08:19 AM
+-- Generation Time: Sep 23, 2024 at 07:15 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +38,15 @@ CREATE TABLE IF NOT EXISTS `gender` (
   `created` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`genderId`),
   UNIQUE KEY `gender` (`gender`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `gender`
+--
+
+INSERT INTO `gender` (`genderId`, `gender`, `updated`, `created`) VALUES
+(1, 'Female', '2024-09-19 13:57:50', '2024-09-19 13:57:50'),
+(2, 'Male', '2024-09-19 13:57:50', '2024-09-19 13:57:50');
 
 -- --------------------------------------------------------
 
@@ -55,7 +62,15 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `created` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`roleId`),
   UNIQUE KEY `role` (`role`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`roleId`, `role`, `updated`, `created`) VALUES
+(1, 'Admin', '2024-09-19 13:58:03', '2024-09-19 13:58:03'),
+(2, 'Editor', '2024-09-19 13:58:03', '2024-09-19 13:58:03');
 
 -- --------------------------------------------------------
 
@@ -79,23 +94,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `email` (`email`),
   KEY `genderId` (`genderId`),
   KEY `roleId` (`roleId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`userId`, `fullname`, `email`, `username`, `password`, `updated`, `created`, `genderId`, `roleId`) VALUES
+(3, 'alex', 'alex@yahoo.com', 'alexuser', '', '2024-09-19 13:58:58', '2024-09-19 13:58:58', 1, 1),
+(4, 'Peter', 'peter@yahoo.com', 'peteruser', '', '2024-09-19 13:59:27', '2024-09-19 13:59:27', 1, 1);
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `gender`
---
-ALTER TABLE `gender`
-  ADD CONSTRAINT `gender_ibfk_1` FOREIGN KEY (`genderId`) REFERENCES `users` (`genderId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `roles`
---
-ALTER TABLE `roles`
-  ADD CONSTRAINT `roles_ibfk_1` FOREIGN KEY (`roleId`) REFERENCES `users` (`roleId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `users`
